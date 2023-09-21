@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #292c31;
+            color: white;
+        }
+        .whole{
+            display: flex;
+            flex-direction: column;
+        
+        }
+        .classcontainer {
+            position: absolute;
+            box-sizing: border-box;
+            top:5%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            background-color : #3a3d42;;
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+            border-radius: 0px 0px 10px 10px;
+        }.divinclass{
+            padding: 10px;
+            margin: 5px;
+            box-sizing: border-box;
+            
+            
+        }.new{
+            background-color: rgba(128, 117, 117, 0.8);
+            border: 3px solid red;
+            border-radius: 4px;
+        }
+        .class2container{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            align-self: center;
+            top: 10%;
+            margin-top: 02em;
+            padding: 15px;
+            background-color: #273137;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .inner1class{
+            display: flex;
+            
+            padding: 10px;
+        
+        }#wifi{
+            background-color:  #3a3d42;
+            border: 3px solid red;
+            
+        }
+        .inner2class{
+            display: flex;
+        }.devices{
+            margin: 10px 50px;
+            padding: 10px;
+            border-radius: 4px;
+        }.class3container{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            align-self: center;
+            top: 70%;
+            margin-top: 02em;
+            padding: 15px;
+            background-color:#273137;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }a{
+            text-decoration: none;
+            color: white;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="whole">
+        <div class="classcontainer">
+            <div class="divinclass" style="margin-right: 15px;"><a href="#">Devices</a></div>
+            <div class="divinclass new" style="margin-left: 5px;"><a href="#">New</a></div>
+        </div>
+        <div class="class2container">
+            <h1>Add Device <span style="float: right;margin-right:5%"><img src="qr.png"  alt="" width="50px"></span></h1>
+            <div class="inner1class">
+                
+                
+                <div class="devices" id="wifi"><a href="#" onclick="(function(){ device('wifi');})()"><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></a></div>
+                <div class="devices" id="wired"><a href="#" onclick="(function(){ device('wired');})()"><img src="wired.png" alt="" width="100px"><br><b>Wired Devices</b></a></div>
+                <div class="devices" id="cloud"><a href="#" onclick="(function(){ device('cloud');})()"><img src="cloud.png" alt="" width="100px"><br><b>Cloud Device</b></a></div>
+                <div class="devices" id="update" style="text-align: center;"><a href="#" onclick="(function(){ device('update');})()"><img src="update.png" alt="" width="90px"><br><b>Device Initialization</b></a></div>
+            </div>
+            
+        </div>
+        <div class="class3container">
+            <h1>Search</h1>
+            <div class="inner1class">
+                
+                
+                <div class="devices" id="hello"><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></div>
+                <div class="devices"><img src="wired.png" alt="" width="100px"><br><b>Wired Devices</b></div>
+                <div class="devices"><img src="cloud.png" alt="" width="100px"><br><b>Cloud Device</b></div>
+                <div class="devices" style="text-align: center;"><img src="update.png" alt="" width="100px"><br><b>Device Initialization</b></div>
+            </div>
+            
+        </div>
+    </div>
+    <script>
+        function device(idname) {
+            var elem = document.getElementById(idname);
+            elem.style.backgroundColor = '#3a3d42';
+            elem.style.border = '3px solid red'; 
+            var arr=['wifi','wired','cloud','update'].filter(function(value){
+                if (value!=idname){
+                    return true;
+                }
+            })
+            for(i of arr){
+                document.getElementById(i).style.backgroundColor = 'inherit';
+                document.getElementById(i).style.border = 'inherit';
+            }
+        
+        }
+        
+    </script>
+</body>
+</html>
