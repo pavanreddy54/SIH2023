@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            text-align: center;
+        }
+
+        .video-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .video-controls button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+
+        .fullscreen-button {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="video-container">
+    <video id="myVideo" controls>
+        <source src="video.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <div class="video-controls">
+        <button id="playPause">Play</button>
+        <button id="mute">Mute</button>
+        <button id="fullScreen" class="fullscreen-button">Fullscreen</button>
+    </div>
+</div>
+
+<script>
+    const video = document.getElementById("myVideo");
+    const playPauseButton = document.getElementById("playPause");
+    const muteButton = document.getElementById("mute");
+    const fullScreenButton = document.getElementById("fullScreen");
+
+    playPauseButton.addEventListener("click", () => {
+        if (video.paused || video.ended) {
+            video.play();
+            playPauseButton.textContent = "Pause";
+        } else {
+            video.pause();
+            playPauseButton.textContent = "Play";
+        }
+    });
+
+    muteButton.addEventListener("click", () => {
+        if (video.muted) {
+            video.muted = false;
+            muteButton.textContent = "Mute";
+        } else {
+            video.muted = true;
+            muteButton.textContent = "Unmute";
+        }
+    });
+
+    fullScreenButton.addEventListener("click", () => {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) { /* Firefox */
+            video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { /* IE/Edge */
+            video.msRequestFullscreen();
+        }
+    });
+</script>
+
+</body>
+</html>
