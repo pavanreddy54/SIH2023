@@ -33,12 +33,13 @@
             padding: 10px;
             margin: 5px;
             box-sizing: border-box;
+            border-radius: 4px;
             
-            
-        }.new{
+        }
+        #new{
             background-color: rgba(128, 117, 117, 0.8);
             border: 3px solid red;
-            border-radius: 4px;
+            
         }
         .class2container{
             display: flex;
@@ -57,7 +58,7 @@
             
             padding: 10px;
         
-        }#wifi{
+        }#wifi,#play{
             background-color:  #3a3d42;
             border: 3px solid red;
             
@@ -73,7 +74,7 @@
             flex-direction: column;
             position: absolute;
             align-self: center;
-            top: 70%;
+            top: 65%;
             margin-top: 02em;
             padding: 15px;
             background-color:#273137;
@@ -91,30 +92,31 @@
 <body>
     <div class="whole">
         <div class="classcontainer">
-            <div class="divinclass" style="margin-right: 15px;"><a href="#">Devices</a></div>
-            <div class="divinclass new" style="margin-left: 5px;"><a href="#">New</a></div>
+            <div class="divinclass" data-active="false" style="margin-right: 15px;" id="Device_list"><a href="#" onclick="(function(){ switching('Device_list');})()">Devices</a></div>
+            <div class="divinclass" data-active="true" id="new" style="margin-left: 5px;"><a href="#" onclick="(function(){ switching('new');})()">New</a></div>
         </div>
-        <div class="class2container">
+        
+        <div class="class2container" id="new_class2">
             <h1>Add Device <span style="float: right;margin-right:5%"><img src="qr.png"  alt="" width="50px"></span></h1>
             <div class="inner1class">
                 
                 
-                <div class="devices" id="wifi"><a href="#" onclick="(function(){ device('wifi');})()"><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></a></div>
+                <div class="devices" id="wifi"><a href="#" ><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></a></div>
                 <div class="devices" id="wired"><a href="#" onclick="(function(){ device('wired');})()"><img src="wired.png" alt="" width="100px"><br><b>Wired Devices</b></a></div>
                 <div class="devices" id="cloud"><a href="#" onclick="(function(){ device('cloud');})()"><img src="cloud.png" alt="" width="100px"><br><b>Cloud Device</b></a></div>
                 <div class="devices" id="update" style="text-align: center;"><a href="#" onclick="(function(){ device('update');})()"><img src="update.png" alt="" width="90px"><br><b>Device Initialization</b></a></div>
             </div>
             
         </div>
-        <div class="class3container">
+        <div class="class3container" id="new_class3">
             <h1>Search</h1>
             <div class="inner1class">
                 
                 
-                <div class="devices" id="hello"><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></div>
-                <div class="devices"><img src="wired.png" alt="" width="100px"><br><b>Wired Devices</b></div>
-                <div class="devices"><img src="cloud.png" alt="" width="100px"><br><b>Cloud Device</b></div>
-                <div class="devices" style="text-align: center;"><img src="update.png" alt="" width="100px"><br><b>Device Initialization</b></div>
+                <div class="devices" id="play" style="text-align: center;"><a href="#" onclick="(function(){ search('play');})()"><img src="playback.png" alt="" width="100px"><br><b>Play Back</b></a></div>
+                <div class="devices" id="log" style="text-align: center;"><a href="#" onclick="(function(){ search('log');})()"><img src="log.png" alt="" width="100px"><br><b>Log</b></a></div>
+                <div class="devices" id="live" style="text-align: center;"><a href="page3.html" onclick="(function(){ search('live');})()"><img src="live.png" alt="" width="100px"><br><b>Live</b></a></div>
+                <div class="devices" id="count" style="text-align: center;"><a href="#" onclick="(function(){ search('count');})()"><img src="counting.png" alt="" width="100px"><br><b>People counting</b></a></div>
             </div>
             
         </div>
@@ -135,7 +137,48 @@
             }
         
         }
+        function search(idname1) {
+            var elem1 = document.getElementById(idname1);
+            elem1.style.backgroundColor = '#3a3d42';
+            elem1.style.border = '3px solid red';
         
+            // Target the elements within inner1class
+            var inner1class = document.querySelector('.inner1class');
+            var elementsToReset = inner1class.querySelectorAll('.devices');
+        
+            elementsToReset.forEach(function (element) {
+                if (element.id !== idname1) {
+                    element.style.backgroundColor = 'inherit';
+                    element.style.border = 'inherit';
+                }
+            });
+        }
+        
+        function switching(idnam){
+            var elem = document.getElementById(idnam);
+            elem.style.backgroundColor = 'rgba(128, 117, 117, 0.8)';
+            elem.style.border = '3px solid red';
+            
+            var arr=['Device_list','new'].filter(function(value){
+                if (value!=idnam){
+                    return true;
+                }
+            })
+            var arr_list={'Device_list':[],'new':['new_class2','new_class3']}
+            for(i of arr){
+                document.getElementById(i).style.backgroundColor = 'inherit';
+                document.getElementById(i).style.border = 'inherit';
+                
+                for(j of arr_list[i]){
+                    document.getElementById(j).style.display='none';
+                
+                }
+            }
+            for(j of arr_list[idnam]){
+                document.getElementById(j).style.display='block';
+            }
+
+        }
     </script>
 </body>
-</html>
+</html
