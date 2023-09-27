@@ -16,8 +16,10 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+            margin-top: 5%;
             background-color: #333;
             border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
         video {
@@ -53,16 +55,16 @@
 
 <div class="video-container">
     <video id="myVideo" controls>
-        <source src="video.mp4" type="video/mp4">
+        <source src="https://cdn.glitch.global/987d01c2-328f-4e68-9407-5eabff1f925c/TTD%20new%20software%20to%20find%20out%20who%20not%20followed%20social%20distance%20rule%20in%20Tirumala%20_%2096tv.mp4?v=1695562496655" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
-    <div class="video-controls">
-        <button id="playPause">Play</button>
-        <button id="mute">Mute</button>
-        <button id="fullScreen" class="fullscreen-button">Fullscreen</button>
-    </div>
+    
 </div>
-
+<div class="video-controls">
+    <button id="playPause">Play</button>
+    <button id="mute">Mute</button>
+    <button id="fullScreen" class="fullscreen-button">Fullscreen</button>
+</div>
 <script>
     const video = document.getElementById("myVideo");
     const playPauseButton = document.getElementById("playPause");
