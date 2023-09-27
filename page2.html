@@ -58,7 +58,12 @@
             
             padding: 10px;
         
-        }#wifi,#play{
+        }#wifi{
+            background-color:  #3a3d42;
+            border: 3px solid red;
+            
+        }
+        #play{
             background-color:  #3a3d42;
             border: 3px solid red;
             
@@ -83,6 +88,163 @@
         }a{
             text-decoration: none;
             color: white;
+        }#new_class4{
+            display:none
+        }
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        video {
+            max-width: 300px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .outbox {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            background-color: #3a3d42;
+            width: 180px;
+            height: 150px;
+            border: 1px solid white;
+            margin-top: 20px;
+            border-radius: 10px;
+            margin-left: 2lvh;
+        }
+
+        .horizontal-line {
+            width: 150px;
+            height: 2px;
+            background-color: white;
+            margin-top: 20px; 
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        .circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #3a3d42;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .plus {
+            font-size: 36px;
+            color: white;
+        }#unique_new_class{
+            display: none;
+        }
+        .class4container{
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            align-self: center;
+            top: 12%;
+            width: 900px;
+            margin-top: 02em;
+            padding: 15px;
+            background-color: #273137;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgb(0,0,0); 
+            background-color: rgba(0,0,0,0.6); 
+          }
+          
+        
+          .modal-content {
+            background-color: #292c31;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+          }
+          
+          .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            top: 2%;
+          }
+          
+          .close:hover,
+          .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+          }.manual{
+            text-align: center;
+            top: 2%;
+          }.nor {
+            display: grid;
+            grid-template-columns: max-content 1fr;
+            align-items: center;
+            gap: 10px; 
+            
+        }
+    
+        label {
+            color: white;
+        }
+    
+        input[type="text"],
+        input[type="number"],
+        input[type="password"] {
+            background-color: #273137;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 4px;
+            width: 200px; /* Take up all available width */
+            border: 1px solid white;
+        }.centering{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 40vh;
+        }.bus{
+            display: flex;
+            justify-content: center;
+            
+        }.fin{
+            background-color: rgb(240, 37, 37);
+            color: white;
+            
+            padding: 3px;
+            border: 1px solid white;
+            border-radius: 5px;
+            margin: 5px;
         }
 
 
@@ -101,60 +263,120 @@
             <div class="inner1class">
                 
                 
-                <div class="devices" id="wifi"><a href="#" ><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></a></div>
-                <div class="devices" id="wired"><a href="#" onclick="(function(){ device('wired');})()"><img src="wired.png" alt="" width="100px"><br><b>Wired Devices</b></a></div>
-                <div class="devices" id="cloud"><a href="#" onclick="(function(){ device('cloud');})()"><img src="cloud.png" alt="" width="100px"><br><b>Cloud Device</b></a></div>
-                <div class="devices" id="update" style="text-align: center;"><a href="#" onclick="(function(){ device('update');})()"><img src="update.png" alt="" width="90px"><br><b>Device Initialization</b></a></div>
+                <div class="devices" id="wifi"><a href="#" onclick="(function(){ device('wifi',arr);})()"><img src="WiFi.png" alt="" width="100px"><br><b>WiFi Devices</b></a></div>
+                <div class="devices" id="wired"><a href="#" onclick="(function(){ device('wired',arr);wired_modal()})()"><img src="wired.png" alt="" width="100px"><br><b>Wired Devices</b></a></div>
+                <div class="devices" id="cloud"><a href="#" onclick="(function(){ device('cloud',arr);})()"><img src="cloud.png" alt="" width="100px"><br><b>Cloud Device</b></a></div>
+                <div class="devices" id="update" style="text-align: center;"><a href="#" onclick="(function(){ device('update',arr);})()"><img src="update.png" alt="" width="90px"><br><b>Device Initialization</b></a></div>
             </div>
             
         </div>
+        <div id="myModal" class="modal">
+
+            
+            <div class="modal-content">
+                <div class="manual"><span class="close">&times;</span><h3>Manual Add</h3></div>
+                <hr>
+                
+                <div class="centering">
+                    <div class="nor">
+                        <label for="dname">Device Name:</label>
+                        <input type="text" name="dname" id="dname" required>
+                        
+                        <label for="domname">Ip/Domain Name:</label>
+                        <input type="text" name="domname" id="domname" required>
+                        
+                        <label for="port">Port:</label>
+                        <input type="number" name="port" id="port" required>
+                        
+                        <label for="uname">Username:</label>
+                        <input type="text" name="uname" id="uname" required>
+                        
+                        <label for="paswd">Password:</label>
+                        <input type="password" name="paswd" id="paswd" required>
+                    </div>
+                </div>
+                <div class="bus">
+                    <button class="fin" onclick="can()">Save and Continue</button>
+                    <button class="fin" onclick="can()">Add</button>
+                    <button class="fin" onclick="can()">Cancel</button>
+                </div>
+              
+            </div>
+          
+          </div>
         <div class="class3container" id="new_class3">
             <h1>Search</h1>
             <div class="inner1class">
                 
                 
-                <div class="devices" id="play" style="text-align: center;"><a href="#" onclick="(function(){ search('play');})()"><img src="playback.png" alt="" width="100px"><br><b>Play Back</b></a></div>
-                <div class="devices" id="log" style="text-align: center;"><a href="#" onclick="(function(){ search('log');})()"><img src="log.png" alt="" width="100px"><br><b>Log</b></a></div>
-                <div class="devices" id="live" style="text-align: center;"><a href="page3.html" onclick="(function(){ search('live');})()"><img src="live.png" alt="" width="100px"><br><b>Live</b></a></div>
-                <div class="devices" id="count" style="text-align: center;"><a href="#" onclick="(function(){ search('count');})()"><img src="counting.png" alt="" width="100px"><br><b>People counting</b></a></div>
+                <div class="devices" id="play" style="text-align: center;"><a href="#"  onclick="(function(){ device('play',arr1);})()"><img src="playback.png" alt="" width="100px"><br><b>Play Back</b></a></div>
+                
+                <div class="devices" id="live" style="text-align: center;"><a href="page3.html"  onclick="(function(){ device('live',arr1); })()"><img src="live.png" alt="" width="100px"><br><b>Live</b></a></div>
+                <div class="devices" id="log" style="text-align: center;"><a href="#"  onclick="(function(){ device('log',arr1);})()"><img src="log.png" alt="" width="100px"><br><b>Log</b></a></div>
+                <div class="devices" id="count" style="text-align: center;"><a href="#"  onclick="(function(){ device('count',arr1);})()"><img src="counting.png" alt="" width="100px"><br><b>People counting</b></a></div>
+
             </div>
             
         </div>
+        <div class="class4container" id="unique_new_class">
+                
+            <div class="inner1class" >
+                <div class="video-container" style="justify-content: space around;">
+                    <video controls id="hell">
+                        <source src="video.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <video controls id="hell">
+                        <source src="video.mp4" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <div class="outbox">
+                        <div class="box">
+                            <a href="#" onclick="newdev()">
+                                <div class="circle">
+                                    <div class="plus">+</div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="horizontal-line"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script>
-        function device(idname) {
+        var arr= ['wifi','wired','cloud','update']
+        var arr1=['play', 'log', 'live', 'count']
+        function device(idname,arra) {
             var elem = document.getElementById(idname);
             elem.style.backgroundColor = '#3a3d42';
             elem.style.border = '3px solid red'; 
-            var arr=['wifi','wired','cloud','update'].filter(function(value){
+            var arria=arra.filter(function(value){
                 if (value!=idname){
                     return true;
                 }
             })
-            for(i of arr){
+            for(let i of arria){
                 document.getElementById(i).style.backgroundColor = 'inherit';
                 document.getElementById(i).style.border = 'inherit';
             }
         
         }
-        function search(idname1) {
-            var elem1 = document.getElementById(idname1);
-            elem1.style.backgroundColor = '#3a3d42';
-            elem1.style.border = '3px solid red';
-        
-            // Target the elements within inner1class
-            var inner1class = document.querySelector('.inner1class');
-            var elementsToReset = inner1class.querySelectorAll('.devices');
-        
-            elementsToReset.forEach(function (element) {
-                if (element.id !== idname1) {
-                    element.style.backgroundColor = 'inherit';
-                    element.style.border = 'inherit';
-                }
-            });
+        function newdev(){
+            var elem = document.getElementById('new');
+            elem.style.backgroundColor = 'rgba(128, 117, 117, 0.8)';
+            elem.style.border = '3px solid red';
+            document.getElementById('Device_list').style.backgroundColor = 'inherit';
+            document.getElementById('Device_list').style.border = 'inherit';
+            document.getElementById('unique_new_class').style.display='none';
+            document.getElementById('new_class2').style.display='block';
         }
+       
+
         
         function switching(idnam){
+            
             var elem = document.getElementById(idnam);
             elem.style.backgroundColor = 'rgba(128, 117, 117, 0.8)';
             elem.style.border = '3px solid red';
@@ -164,21 +386,49 @@
                     return true;
                 }
             })
-            var arr_list={'Device_list':[],'new':['new_class2','new_class3']}
+            var arr_list={'Device_list':['unique_new_class'],'new':['new_class2','new_class3']}
             for(i of arr){
                 document.getElementById(i).style.backgroundColor = 'inherit';
                 document.getElementById(i).style.border = 'inherit';
                 
                 for(j of arr_list[i]){
+                    
                     document.getElementById(j).style.display='none';
                 
                 }
             }
+            
+            
             for(j of arr_list[idnam]){
+                
+                
                 document.getElementById(j).style.display='block';
+                
             }
+            return false;
 
+
+        }
+        function wired_modal(){
+            var modal = document.getElementById("myModal");
+            var span = document.getElementsByClassName("close")[0];
+            
+            
+            modal.style.display = "block";
+            
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                  modal.style.display = "none";
+                }
+            }
+            span.onclick = function() {
+                modal.style.display = "none";
+              }
+        }
+        function can(){
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
         }
     </script>
 </body>
-</html
+</html>
